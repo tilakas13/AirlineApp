@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="margin_top_news_horizontal">2dp</dimen>
+    <dimen name="margin_top_news_vertical">5dp</dimen>
+    <dimen name="elevation_news_item">2dp</dimen>
+    <dimen name="corner_radius_top_news">5dp</dimen>
+    <dimen name="height_list_item">120dp</dimen>
+    <dimen name="height_list_image">100dp</dimen>
+    <dimen name="padding_list_item">5dp</dimen>
+    <dimen name="text_size_default_name">15sp</dimen>
+    <dimen name="text_size_phone_number">12sp</dimen>
+    <dimen name="padding_10dp">10dp</dimen>
+    <dimen name="dimen_progress_loader">50dp</dimen>
+</resources>
