@@ -17,7 +17,6 @@ import com.tilak.apps.airlineapp.R;
 import com.tilak.apps.airlineapp.model.AirlineItem;
 
 
-
 public class AirlineItemViewHolder extends RecyclerView.ViewHolder {
 
     private final Context mContext;
@@ -38,9 +37,15 @@ public class AirlineItemViewHolder extends RecyclerView.ViewHolder {
     }
 
 
-    public AirlineItemViewHolder(View itemView,ItemClickLister listener) {
+    public AirlineItemViewHolder(View itemView, ItemClickLister listener) {
         super(itemView);
         logoUrl = itemView.findViewById(R.id.image_airline_list);
+        logoUrl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.onItemSelection(getAdapterPosition());
+            }
+        });
         textviewDefaultName = itemView.findViewById(R.id.text_view_default_name);
         textviewPhoneNUmber = itemView.findViewById(R.id.text_view_phone_number);
         logoUrl = itemView.findViewById(R.id.image_airline_list);
@@ -51,24 +56,12 @@ public class AirlineItemViewHolder extends RecyclerView.ViewHolder {
 
 
     void bindViewHolder(AirlineItem item) {
-
         mViewDataBinding.setVariable(BR.itemAirlines, item);
         mViewDataBinding.executePendingBindings();
-
-      /*  Glide.with(mContext).
-                load(AppConstants.BASR_URL + item.getLogoUrl()).
-                thumbnail(0.3f).
-                placeholder(R.drawable.ic_placeholder).
-                error(R.drawable.ic_placeholder).
-                into(logoUrl);
-        textviewDefaultName.setText(item.getDefaultName());
-        textviewPhoneNUmber.setText(item.getPhoneNumber());*/
-
     }
 
     @BindingAdapter({"bind:image_url"})
-    public static void loadImage(ImageView imageView,String url)
-    {
+    public static void loadImage(ImageView imageView, String url) {
         Glide.with(imageView.getContext()).
                 load(AppConstants.BASR_URL + url).
                 thumbnail(0.3f).
@@ -77,8 +70,4 @@ public class AirlineItemViewHolder extends RecyclerView.ViewHolder {
                 into(imageView);
     }
 
-   // @OnClick(R.id.container_list_item)
-    void onViewHolderSelection() {
-        listener.onItemSelection(getAdapterPosition());
-    }
 }
