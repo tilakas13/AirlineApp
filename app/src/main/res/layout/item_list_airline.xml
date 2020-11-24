@@ -36,7 +36,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:contentDescription="@null"
-                    android:scaleType="fitXY"
+                    android:scaleType="centerInside"
                     android:clickable="true"
                     android:focusable="true"
                     app:image_url="@{itemAirlines.logoUrl}" />

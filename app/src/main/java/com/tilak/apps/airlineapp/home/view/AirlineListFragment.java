@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.tilak.apps.airlineapp.R;
 import com.tilak.apps.airlineapp.home.presenter.AirlineListPresenter;
 import com.tilak.apps.airlineapp.model.AirlineItem;
+import com.tilak.apps.airlines.logger.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,9 +46,7 @@ public class AirlineListFragment extends Fragment implements IAirlineListView, A
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_airline_list, container, false);
-
-        return view;
+        return inflater.inflate(R.layout.fragment_airline_list, container, false);
     }
 
     @Override
@@ -63,6 +62,7 @@ public class AirlineListFragment extends Fragment implements IAirlineListView, A
     }
 
     private void setupRecyclerViewAirlines() {
+        Logger.logMessage(TAG, "In  setupRecyclerViewAirlines");
         mListAirlines = new ArrayList<>();
         mAdapterAirlineList = new AirlinesListAdapter(mListAirlines, this);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());

@@ -1,2 +1,3 @@
+include ':Logger'
 include ':app'
 rootProject.name = "AirlineApp"
