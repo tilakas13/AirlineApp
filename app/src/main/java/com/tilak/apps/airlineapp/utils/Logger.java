@@ -7,7 +7,7 @@ import com.tilak.apps.airlineapp.BuildConfig;
 
 public class Logger {
 
-    public static void logMessage(final String tagName, final String message) {
+    public static void logInfo(final String tagName, final String message) {
         if (BuildConfig.DEBUG && !TextUtils.isEmpty(message)) {
             Log.d(tagName, message);
         }

@@ -21,6 +21,7 @@ public class AirlinesListAdapter extends RecyclerView.Adapter<AirlineItemViewHol
     private List<AirlineItem> mListAirlines;
     private OnItemSelectionListener mListener;
 
+
     public AirlinesListAdapter(List<AirlineItem> listItems, OnItemSelectionListener listener) {
         mListAirlines = listItems;
         mListener = listener;
@@ -40,7 +41,7 @@ public class AirlinesListAdapter extends RecyclerView.Adapter<AirlineItemViewHol
 
     @Override
     public void onBindViewHolder(AirlineItemViewHolder holder, int position) {
-        holder.bindViewHolder(mListAirlines.get(position));
+        holder.bindData(mListAirlines.get(position));
     }
 
     @Override

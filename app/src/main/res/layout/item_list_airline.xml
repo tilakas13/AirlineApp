@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data>
 
-        <variable
-            name="itemAirlines"
-            type="com.tilak.apps.airlineapp.model.AirlineItem" />
 
-    </data>
-
-    <RelativeLayout xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        xmlns:tool="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -35,11 +29,10 @@
                     android:layout_width="@dimen/height_list_image"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:contentDescription="@null"
-                    android:scaleType="centerInside"
                     android:clickable="true"
+                    android:contentDescription="@null"
                     android:focusable="true"
-                    app:image_url="@{itemAirlines.logoUrl}" />
+                    android:scaleType="centerInside" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -52,8 +45,8 @@
                         android:id="@+id/text_view_default_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@{itemAirlines.defaultName}"
-                        android:textSize="@dimen/text_size_default_name" />
+                        android:textSize="@dimen/text_size_default_name"
+                        tool:text="AirlineName" />
 
                     <TextView
                         android:id="@+id/text_view_phone_number"
@@ -61,8 +54,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/text_view_default_name"
                         android:paddingTop="10dp"
-                        android:text="@{itemAirlines.phoneNumber}"
-                        android:textSize="@dimen/text_size_phone_number" />
+                        android:textSize="@dimen/text_size_phone_number"
+                        tool:text="574564896583468437" />
 
 
                 </RelativeLayout>
@@ -74,4 +67,3 @@
 
 
     </RelativeLayout>
-</layout>

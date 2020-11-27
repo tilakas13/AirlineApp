@@ -6,12 +6,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.tilak.apps.airlineapp.R;
+import com.tilak.apps.airlineapp.databinding.FragmentAirlineListBinding;
 import com.tilak.apps.airlineapp.home.presenter.AirlineListPresenter;
 import com.tilak.apps.airlineapp.model.AirlineItem;
 import com.tilak.apps.airlineapp.utils.Logger;
@@ -22,18 +22,16 @@ import java.util.List;
 
 public class AirlineListFragment extends Fragment implements IAirlineListView, AirlinesListAdapter.OnItemSelectionListener {
 
-    private static final String TAG = AirlineListFragment.class.getSimpleName();
+    private static final String TAG = "AirlineListFragment";
 
-
-    RecyclerView mRecyclerViewAirlines;
-
-
-    ProgressBar progressBar;
     private OnAirlinesListItemSelection mListener;
 
     private AirlinesListAdapter mAdapterAirlineList;
     private AirlineListPresenter mPresenter;
     private List<AirlineItem> mListAirlines;
+
+    @NonNull
+    FragmentAirlineListBinding fragmentAirlineListBinding;
 
     public AirlineListFragment() {
         // Required empty public constructor
@@ -46,29 +44,26 @@ public class AirlineListFragment extends Fragment implements IAirlineListView, A
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_airline_list, container, false);
+        fragmentAirlineListBinding = FragmentAirlineListBinding.inflate(getActivity().getLayoutInflater());
+        return fragmentAirlineListBinding.getRoot();
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mRecyclerViewAirlines = view.findViewById(R.id.list_airlines);
-        progressBar = view.findViewById(R.id.progress_indicator);
-
-        mRecyclerViewAirlines = view.findViewById(R.id.list_airlines);
         mPresenter = new AirlineListPresenter(this);
         setupRecyclerViewAirlines();
         mPresenter.getListAirlines();
     }
 
     private void setupRecyclerViewAirlines() {
-        Logger.logMessage(TAG, "In  setupRecyclerViewAirlines");
+        Logger.logInfo(TAG, "In  setupRecyclerViewAirlines");
         mListAirlines = new ArrayList<>();
         mAdapterAirlineList = new AirlinesListAdapter(mListAirlines, this);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
-        mRecyclerViewAirlines.setLayoutManager(mLayoutManager);
-        mRecyclerViewAirlines.setHasFixedSize(true);
-        mRecyclerViewAirlines.setAdapter(mAdapterAirlineList);
+        fragmentAirlineListBinding.listAirlines.setLayoutManager(mLayoutManager);
+        fragmentAirlineListBinding.listAirlines.setHasFixedSize(true);
+        fragmentAirlineListBinding.listAirlines.setAdapter(mAdapterAirlineList);
     }
 
 
@@ -98,16 +93,14 @@ public class AirlineListFragment extends Fragment implements IAirlineListView, A
 
     @Override
     public void onDestroy() {
-
         if (mPresenter != null) mPresenter.onDestroy();
         super.onDestroy();
     }
 
     @Override
     public void showProgress(boolean state) {
-        if (progressBar != null) progressBar.setVisibility(state ? View.VISIBLE : View.GONE);
+        fragmentAirlineListBinding.progressIndicator.setVisibility(state ? View.VISIBLE : View.GONE);
     }
-
 
 
     @Override

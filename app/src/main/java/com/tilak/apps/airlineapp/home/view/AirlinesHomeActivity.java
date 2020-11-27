@@ -4,16 +4,24 @@ import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.tilak.apps.airlineapp.R;
+import com.tilak.apps.airlineapp.databinding.ActivityAirlinesHomeBinding;
 
 public class AirlinesHomeActivity extends AppCompatActivity implements AirlineListFragment.OnAirlinesListItemSelection {
+
+    @NonNull
+    private ActivityAirlinesHomeBinding binding;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_airlines_home);
+        binding = ActivityAirlinesHomeBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
         loadFragment(AirlineListFragment.newInstance(), false);
     }
 
