@@ -1,4 +1,4 @@
-package com.tilak.apps.airlines.logger;
+package com.tilak.apps.airlineapp.utils;
 
 import android.text.TextUtils;
 import android.util.Log;

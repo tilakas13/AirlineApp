@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.tilak.apps.airlineapp.R;
 import com.tilak.apps.airlineapp.home.presenter.AirlineListPresenter;
 import com.tilak.apps.airlineapp.model.AirlineItem;
-import com.tilak.apps.airlines.logger.Logger;
+import com.tilak.apps.airlineapp.utils.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
