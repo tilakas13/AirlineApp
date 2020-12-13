@@ -1,12 +1,12 @@
 package com.tilak.apps.airlineapp.home.view;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.tilak.apps.airlineapp.R;
+import com.tilak.apps.airlineapp.databinding.ItemListAirlineBinding;
 import com.tilak.apps.airlineapp.model.AirlineItem;
 
 import java.util.List;
@@ -34,9 +34,8 @@ public class AirlinesListAdapter extends RecyclerView.Adapter<AirlineItemViewHol
 
     @Override
     public AirlineItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_airline, parent, false);
-        return new AirlineItemViewHolder(view,this);
+        @NonNull ItemListAirlineBinding itemBinding = ItemListAirlineBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        return new AirlineItemViewHolder(itemBinding,this);
     }
 
     @Override

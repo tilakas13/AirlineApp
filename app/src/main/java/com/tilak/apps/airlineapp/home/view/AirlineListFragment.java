@@ -33,9 +33,6 @@ public class AirlineListFragment extends Fragment implements IAirlineListView, A
     @NonNull
     FragmentAirlineListBinding fragmentAirlineListBinding;
 
-    public AirlineListFragment() {
-        // Required empty public constructor
-    }
 
     public static AirlineListFragment newInstance() {
         return new AirlineListFragment();
